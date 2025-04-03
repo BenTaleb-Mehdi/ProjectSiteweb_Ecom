@@ -1,67 +1,63 @@
 const storeLinks = [
-  { element: document.querySelector('.store'), instoreClass: 'instore' },
-  { element: document.querySelector('.mac'), instoreClass: 'instore2' },
-  { element: document.querySelector('.ipad'), instoreClass: 'instore3' },
-  { element: document.querySelector('.iphone'), instoreClass: 'instore4' },
-  { element: document.querySelector('.watch'), instoreClass: 'instore5' },
-  { element: document.querySelector('.vision'), instoreClass: 'instore6' },
-  { element: document.querySelector('.tv'), instoreClass: 'instore7' },
-  { element: document.querySelector('.entertainment'), instoreClass: 'instore8' },
-  { element: document.querySelector('.accessories'), instoreClass: 'instore9' },
-  { element: document.querySelector('.support'), instoreClass: 'instore10' },
-  { element: document.querySelector('.airPods'), instoreClass: 'instore11' },
-  { element: document.querySelector('.sch'), instoreClass: 'instore12' },
-  { element: document.querySelector('.bag'), instoreClass: 'instore13' },
+  { element: document.querySelector(".store"), instoreClass: "instore" },
+  { element: document.querySelector(".mac"), instoreClass: "instore2" },
+  { element: document.querySelector(".ipad"), instoreClass: "instore3" },
+  { element: document.querySelector(".iphone"), instoreClass: "instore4" },
+  { element: document.querySelector(".watch"), instoreClass: "instore5" },
+  { element: document.querySelector(".vision"), instoreClass: "instore6" },
+  { element: document.querySelector(".tv"), instoreClass: "instore7" },
+  {
+    element: document.querySelector(".entertainment"),
+    instoreClass: "instore8",
+  },
+  { element: document.querySelector(".accessories"), instoreClass: "instore9" },
+  { element: document.querySelector(".support"), instoreClass: "instore10" },
+  { element: document.querySelector(".airPods"), instoreClass: "instore11" },
+  { element: document.querySelector(".sch"), instoreClass: "instore12" },
+  { element: document.querySelector(".bag"), instoreClass: "instore13" },
 ];
-document.querySelector('.search').addEventListener('click', (event) => {
+document.querySelector(".search").addEventListener("click", (event) => {
   event.stopPropagation(); // Prevent click on search from bubbling up
 });
 function closeAll(exceptElement) {
   storeLinks.forEach(({ instoreClass }) => {
-    if (exceptElement && document.querySelector(`.${instoreClass}`) === exceptElement) return;
-    document.querySelector(`.${instoreClass}`).classList.remove('active');
+    if (
+      exceptElement &&
+      document.querySelector(`.${instoreClass}`) === exceptElement
+    )
+      return;
+    document.querySelector(`.${instoreClass}`).classList.remove("active");
   });
 }
 
 // Add event listener to each element
 storeLinks.forEach(({ element, instoreClass }) => {
-  element.addEventListener('click', (event) => {
+  element.addEventListener("click", (event) => {
     event.stopPropagation(); // Prevent the click event from bubbling up
     const targetElement = document.querySelector(`.${instoreClass}`);
 
     // Toggle the active class for the clicked element
-    if (targetElement.classList.contains('active')) {
+    if (targetElement.classList.contains("active")) {
       // If it's already active, close it
-      targetElement.classList.remove('active');
+      targetElement.classList.remove("active");
     } else {
       // Close all other lists
       closeAll(targetElement);
       // Ensure the clicked one is active
-      targetElement.classList.add('active');
+      targetElement.classList.add("active");
     }
   });
 });
 
 // Close all lists when clicking outside
-document.addEventListener('click', () => closeAll(null));
+document.addEventListener("click", () => closeAll(null));
 
-
-
-
-
-
-
-
-
-
-
-
-var swiper = new Swiper('.swiper', {
+var swiper = new Swiper(".swiper", {
   slidesPerView: 8,
   direction: getDirection(),
   navigation: {
-    nextEl: '.swiper-button-next',
-    prevEl: '.swiper-button-prev',
+    nextEl: ".swiper-button-next",
+    prevEl: ".swiper-button-prev",
   },
   on: {
     resize: function () {
@@ -70,116 +66,129 @@ var swiper = new Swiper('.swiper', {
   },
 });
 
-function getDirection() { 
+function getDirection() {
   var windowWidth = window.innerWidth;
-  var direction = window.innerWidth <= 760 ? 'vertical' : 'horizontal';
+  var direction = window.innerWidth <= 760 ? "vertical" : "horizontal";
 
   return direction;
 }
 
+const navbar = document.querySelector(".navbar");
+const mood = document.querySelector(".mood");
 
-
-const navbar = document.querySelector('.navbar');
-const mood = document.querySelector('.mood');
-
-
-mood.addEventListener('click',()=>{
-  document.body.classList.toggle('show');
- 
-})
-
+mood.addEventListener("click", () => {
+  document.body.classList.toggle("show");
+});
 
 const items = document.querySelectorAll(".promo-item");
 const main = document.querySelectorAll(".main-promo");
 
-
 main.forEach((main) => {
   const buy = main.querySelector(".buy");
 
-  main.addEventListener('mouseenter', () => {
-    buy.classList.add('acct');
-
+  main.addEventListener("mouseenter", () => {
+    buy.classList.add("acct");
   });
 
-  main.addEventListener('mouseleave', () => {
-    buy.classList.remove('acct');
-   
+  main.addEventListener("mouseleave", () => {
+    buy.classList.remove("acct");
   });
 });
- 
 
 items.forEach((item) => {
   const btn = item.querySelector(".btnb");
-  const par = item.querySelector('p');
-  item.addEventListener('mouseenter', () => {
-    btn.classList.add('acct');
-   
+  const par = item.querySelector("p");
+  item.addEventListener("mouseenter", () => {
+    btn.classList.add("acct");
   });
 
-  item.addEventListener('mouseleave', () => {
-    btn.classList.remove('acct');
-   
+  item.addEventListener("mouseleave", () => {
+    btn.classList.remove("acct");
   });
 });
-
-
-
 
 const scrollup = document.querySelector(".scrollup");
-window.addEventListener('scroll',()=>{
-        if(scrollY > 800){
-          scrollup.style.display = 'block';
-        }else{
-          scrollup.style.display = 'none';
-        }
-})
+window.addEventListener("scroll", () => {
+  if (scrollY > 800) {
+    scrollup.style.display = "block";
+  } else {
+    scrollup.style.display = "none";
+  }
+});
 
-
-
-
-scrollup.addEventListener('click',()=>{
+scrollup.addEventListener("click", () => {
   window.scrollTo({
-    top : 0,
-    behavior:'smooth'
+    top: 0,
+    behavior: "smooth",
   });
 });
- 
- 
+
 const section6 = document.querySelector(".section6");
 
-window.addEventListener('scroll', () => {
-    if (scrollY > 4130) {
-        section6.style.transform = 'translateX(0)';
-        section6.style.opacity = '1';
-    } else {
-        section6.style.transform = 'translateX(-100%)';
-        section6.style.opacity = '0';
-    }
+window.addEventListener("scroll", () => {
+  if (scrollY > 3930) {
+    section6.style.transform = "translateX(0)";
+    section6.style.opacity = "1";
+  } else {
+    section6.style.transform = "translateX(-100%)";
+    section6.style.opacity = "0";
+  }
 });
-
+window.addEventListener("scroll", () => {
+  console.log(window.scrollY);
+});
 
 const cardcredit = document.querySelector(".cardcredit");
-const buyButtons = document.querySelectorAll(".grid-container .buy button,.grid-container .btnb button, .cardshoping .cardshop button");
-const cls = document.querySelector('.close');
+const buyButtons = document.querySelectorAll(
+  ".grid-container .buy button, .grid-container .btnb button,.section4 .cardshoping .cardshop button"
+);
+const cls = document.querySelector(".close");
 
-buyButtons.forEach(button => {
-  button.addEventListener('click', () => {
-    cardcredit.classList.toggle('active'); 
+buyButtons.forEach((button) => {
+  button.addEventListener("click", (event) => {
+    // Get the product name
+    const productName = event.target
+      .closest(".promo-item")
+      .querySelector("p").textContent;
+
+    // Display the credit card popup
+    cardcredit.classList.toggle("active");
+
+    // Optional: Display the product name somewhere on the card
+    const productNameField = document.querySelector(".product-name");
+    if (productNameField) {
+      productNameField.textContent = productName;
+    }
+
+    console.log(`Product Name: ${productName}`); // For testing
   });
-  cls.addEventListener('click',()=>{
-    cardcredit.classList.remove('active'); 
-  })
 
+  cls.addEventListener("click", () => {
+    cardcredit.classList.remove("active");
+  });
 });
 
+const toggle = document.querySelector(".toggle");
+const menu = document.querySelector(".menu");
+toggle.addEventListener("click", () => {
+  menu.classList.toggle("active");
+});
 
+const quntity = document.querySelector(".quntity"),
+  plus = document.querySelector(".plus"),
+  cont = document.querySelector(".cont"),
+  moin = document.querySelector(".moin");
+let contour = 0;
 
-const toggle = document.querySelector('.toggle');
-const menu = document.querySelector('.menu');
-toggle.addEventListener('click',()=>{
-  menu.classList.toggle('active');
-})
+plus.addEventListener("click", () => {
+  contour++;
+  cont.textContent = contour;
+});
 
-
-
-
+moin.addEventListener("click", () => {
+  if (contour <= 0) {
+    contour = 1;
+  }
+  contour--;
+  cont.textContent = contour;
+});
